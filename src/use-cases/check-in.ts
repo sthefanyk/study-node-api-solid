@@ -1,5 +1,6 @@
 import { MaxDistanceError } from '@/errors/max-distance-error'
 import { MaxNumberOfCheckInsError } from '@/errors/max-number-of-check-ins-error'
+import { ResourceNotFoundError } from '@/errors/resource-not-found-error'
 import {
     CheckIn,
     CheckInsRepository,

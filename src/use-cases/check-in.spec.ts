@@ -16,6 +16,7 @@ import { Gym } from '@/repositories/gyms-repository'
 import { Decimal } from '@prisma/client/runtime/library'
 import { MaxNumberOfCheckInsError } from '@/errors/max-number-of-check-ins-error'
 import { MaxDistanceError } from '@/errors/max-distance-error'
+import { ResourceNotFoundError } from '@/errors/resource-not-found-error'
 
 interface TestContextWithSut extends TestContext {
     gymsRepository: InMemoryGymsRepository
@@ -60,6 +61,19 @@ describe('Check-in Use Case', () => {
         })
 
         expect(checkIn.id).toEqual(expect.any(String))
+    })
+
+    it('should not be able to check in if the gym ID is invalid', async ({
+        sut,
+    }: TestContextWithSut) => {
+        await expect(() =>
+            sut.execute({
+                gym_id: 'Fake ID',
+                user_id: 'user-01',
+                userLatitude: -25.5777838,
+                userLongitude: -48.5767553,
+            }),
+        ).rejects.toBeInstanceOf(ResourceNotFoundError)
     })
 
     it('should be able to check in with validated at date', async ({
