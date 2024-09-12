@@ -1,8 +1,8 @@
 import { it, describe, expect, TestContext, beforeEach } from 'vitest'
 import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-users-repository'
 import { AuthenticateUseCase } from './authenticate'
-import { InavalidCredentialsError } from '@/errors/invalid-credentials'
 import { hash } from 'bcryptjs'
+import { InavalidCredentialsError } from '@/errors/invalid-credentials-error'
 
 interface TestContextWithSut extends TestContext {
     usersRepository: InMemoryUsersRepository

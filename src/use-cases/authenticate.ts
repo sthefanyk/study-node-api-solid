@@ -1,4 +1,4 @@
-import { InavalidCredentialsError } from '@/errors/invalid-credentials'
+import { InavalidCredentialsError } from '@/errors/invalid-credentials-error'
 import { User, UsersRepository } from '@/repositories/users-repository'
 import { compare } from 'bcryptjs'
 
