@@ -1,3 +1,7 @@
 {
-    "extends": "@sthefanyk/eslint-config/node"
+    "extends": "@sthefanyk/eslint-config/node",
+    "rules": {
+        "camelcase": "off",
+        "no-useless-constructor": "off"
+    }
 }
