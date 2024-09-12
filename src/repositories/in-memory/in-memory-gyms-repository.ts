@@ -5,6 +5,12 @@ import { Decimal } from '@prisma/client/runtime/library'
 export class InMemoryGymsRepository implements GymsRepository {
     public gyms: Gym[] = []
 
+    async searchMany(query: string, page: number): Promise<Gym[]> {
+        return this.gyms
+            .filter((item) => item.title.includes(query))
+            .slice((page - 1) * 20, page * 20)
+    }
+
     async create(data: GymInput): Promise<Gym> {
         const gym: Gym = {
             id: data.id ?? randomUUID(),
