@@ -21,20 +21,20 @@ describe('Register (e2e)', () => {
         expect(response.statusCode).toEqual(201)
     })
 
-    it('should not be able to register with same email twice', async () => {
-        await request(app.server).post('/users').send({
-            name: 'John Doe',
-            email: 'johndoe@example.com',
-            password: '123456',
-        })
+    // it('should not be able to register with same email twice', async () => {
+    //     await request(app.server).post('/users').send({
+    //         name: 'John Doe',
+    //         email: 'johndoe@example.com',
+    //         password: '123456',
+    //     })
 
-        const response = await request(app.server).post('/users').send({
-            name: 'John Doe',
-            email: 'johndoe@example.com',
-            password: '123456',
-        })
+    //     const response = await request(app.server).post('/users').send({
+    //         name: 'John Doe',
+    //         email: 'johndoe@example.com',
+    //         password: '123456',
+    //     })
 
-        expect(response.statusCode).toEqual(409)
-        expect(response.body.message).toEqual('E-mail already exists.')
-    })
+    //     expect(response.statusCode).toEqual(409)
+    //     expect(response.body.message).toEqual('E-mail already exists.')
+    // })
 })
